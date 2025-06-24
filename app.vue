@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>Hello World</h1>
+    <Button asChild class="bg-red-500 border-2 border-blue-500 ml-10 hover:bg-blue-500 hover:text-white" @click="alertHello">
+      <h1>Click me</h1>
+    </Button>
     
     <!-- 直接使用 GitHubUser 組件 -->
     <div>
@@ -22,6 +25,23 @@
       <pre>{{ githubData }}</pre>
       <pre>{{ localData }}</pre>
     </div> -->
+
+    <AlertDialog>
+    <AlertDialogTrigger as="button" class="bg-red-500 border-2 border-blue-500 ml-10 hover:bg-blue-500 hover:text-white">Open</AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your account
+          and remove your data from our servers.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Continue</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
   </div>
 </template>
 
@@ -55,6 +75,11 @@ const localQuery = useQuery({
   },
   retry: 1, // 減少重試次數
 })
+
+const alertHello = () => {
+  alert('Hello')
+  return 'Hello'
+}
 
 // const localQuery2 = useQuery({
 //   queryKey: ['github-user', 'nuxt'],
