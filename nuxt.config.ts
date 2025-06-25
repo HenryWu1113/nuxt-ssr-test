@@ -10,8 +10,18 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/image',
     '@nuxt/eslint',
-    'shadcn-nuxt'
+    'shadcn-nuxt',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
+    'dayjs-nuxt',
+    'nuxt-lodash'
   ],
+  dayjs: {
+    locales: ['zh-tw'],
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultLocale: 'zh-tw',
+    defaultTimezone: 'Asia/Taipei',
+  },
   shadcn: {
     /**
      * Prefix for all the imported component
